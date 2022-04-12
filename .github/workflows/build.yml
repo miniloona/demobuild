@@ -1,0 +1,28 @@
+name: Build Archlinux Packages
+	
+on:
+workflow_dispatch: # allow manual trigger
+	
+env:
+	TZ: Asia/Dhaka
+	
+jobs:
+	Build: # build packages
+		strategy:
+			matrix:
+				pkgs: [ 
+					unbrave-git
+	      		] # package list 
+	    	fail-fast: false # allow package build fails
+	    runs-on: ubuntu-latest
+	
+	  	steps:
+	    - uses: actions/checkout@main
+	      with:
+	        submodules: true
+	
+	    - name: Build pkgs in above list 
+	      uses: wcwac/pkgbuild-aur@master
+	      with:
+	        pkg-name: ${{ matrix.pkgs }}
+
