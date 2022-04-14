@@ -15,11 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Build Packages
-      uses: kopp/build-aur-packages@v1
+      uses: DuckSoft/build-aur-action@master
       with:
-        packages: >
-          azure-cli
-          kwallet-git
-          micronucleus-git
-        missing_pacman_dependencies: >
-          libusb-compat
+       repo-name: qv2ray-dev-git
